@@ -45,8 +45,7 @@
 document.querySelectorAll(".sub-form").forEach((f) => {
   const msg = f.parentElement.querySelector(".sub-msg");
   try { const saved = JSON.parse(localStorage.getItem("polar-student") || "{}"); ["name", "school", "to"].forEach((k) => { if (saved[k]) f.elements[k].value = saved[k]; }); } catch (e) { /* без збереження */ }
-  f.addEventListener("submit", (ev) => {
-    ev.preventDefault();
+  const letter = () => {
     const v = Object.fromEntries(new FormData(f));
     try { localStorage.setItem("polar-student", JSON.stringify({ name: v.name, school: v.school, to: v.to })); } catch (e) { /* приватний режим */ }
     const boxes = [...document.querySelectorAll(`.check[data-module="${f.dataset.module}"] input`)];
@@ -65,7 +64,28 @@ document.querySelectorAll(".sub-form").forEach((f) => {
       "",
       "Файли розв'язку — у вкладенні.",
     ].filter((x) => x !== null).join("\n");
-    location.href = `mailto:${encodeURIComponent(v.to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    msg.textContent = "Лист відкрито у вашій пошті. Не забудьте прикріпити файли розв'язку перед надсиланням!";
+    return { to: v.to, subject, body };
+  };
+  const enc = encodeURIComponent;
+  const hint = "Прикріпіть файли розв'язку (значок скріпки) і натисніть «Надіслати».";
+  // Gmail у новій вкладці — працює без поштової програми на комп'ютері
+  f.addEventListener("submit", (ev) => {
+    ev.preventDefault();
+    const l = letter();
+    window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${enc(l.to)}&su=${enc(l.subject)}&body=${enc(l.body)}`, "_blank", "noopener");
+    msg.textContent = "Gmail відкрито в новій вкладці з готовим листом. " + hint;
+  });
+  f.querySelector("[data-act=mailto]").addEventListener("click", () => {
+    if (!f.reportValidity()) return;
+    const l = letter();
+    location.href = `mailto:${enc(l.to)}?subject=${enc(l.subject)}&body=${enc(l.body)}`;
+    msg.textContent = "Якщо поштова програма не відкрилася — скористайтеся кнопкою «Надіслати через Gmail» або «Скопіювати лист».";
+  });
+  f.querySelector("[data-act=copy]").addEventListener("click", async () => {
+    if (!f.reportValidity()) return;
+    const l = letter();
+    const text = `Кому: ${l.to}\nТема: ${l.subject}\n\n${l.body}`;
+    try { await navigator.clipboard.writeText(text); msg.textContent = "Лист скопійовано. Вставте його в будь-яку пошту (Ctrl+V). " + hint; }
+    catch (e) { msg.textContent = text; }
   });
 });

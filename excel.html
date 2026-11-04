@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Логістика зимівлі — Полярна олімпіада</title>
 <meta name="description" content="Ви — інженер-логіст. Корабель «Ноосфера» один раз на рік привозить на станцію все необхідне. Треба порахувати потребу в продуктах, пальному й господар">
-<link rel="stylesheet" href="css/style.css?v=3">
+<link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body>
 <header class="top"><a class="brand" href="index.html"><span>❄</span> Полярна олімпіада</a><nav><a href="index.html">Головна</a><a href="word.html">Word</a><a href="excel.html" class=on>Excel</a><a href="access.html">Access</a><a href="powerpoint.html">PowerPoint</a><a href="reglament.html">Регламент</a></nav></header>
@@ -52,7 +52,7 @@
 </div>
 <section class="card submit" id="submit">
   <h2>Здати роботу</h2>
-  <p class="muted">Заповніть поля й натисніть «Сформувати лист» — відкриється ваша пошта з готовим листом учителю.
+  <p class="muted">Заповніть поля й натисніть «Надіслати через Gmail» — у новій вкладці відкриється ваш Gmail з готовим листом учителю (вводити свою адресу не треба: лист піде з пошти, в яку ви увійшли).
   <b>Прикріпіть до листа свої файли</b> (Логістика зимівлі.xlsx з аркушами Потреба, Замовлення, Запаси, Панель і таблицею даних на аркуші Параметри) — краще однією текою в zip.</p>
   <form class="sub-form" data-module="excel" data-title="Microsoft Excel · Логістика зимівлі" data-steps="11">
     <label>Прізвище та ім'я<input name="name" required placeholder="Іваненко Олена"></label>
@@ -60,13 +60,15 @@
     <label>Пошта вчителя<input name="to" type="email" required value="kokorintaras07@gmail.com"></label>
     <label>Витрачений час, хв<input name="time" type="number" min="1" max="300" placeholder="70"></label>
     <label class="wide">Коментар (необов'язково)<textarea name="note" rows="2" placeholder="Що не вдалося, які були труднощі"></textarea></label>
-    <button class="btn" type="submit">✉ Сформувати лист</button>
+    <div class="sub-btns"><button class="btn" type="submit">✉ Надіслати через Gmail</button>
+    <button class="btn ghost" type="button" data-act="mailto">Поштова програма</button>
+    <button class="btn ghost" type="button" data-act="copy">Скопіювати лист</button></div>
   </form>
   <p class="sub-msg muted"></p>
 </section>
 
 </main>
 <footer>© 2026 Кокорін Тарас, 3 курс, група 33 Бд-СОінф · ЖДУ імені Івана Франка · навчальний ресурс для підготовки до олімпіад з ІТ</footer>
-<script src="js/app.js?v=3"></script>
+<script src="js/app.js?v=4"></script>
 </body>
 </html>
