@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Логістика зимівлі — Полярна олімпіада</title>
 <meta name="description" content="Ви — інженер-логіст. Корабель «Ноосфера» один раз на рік привозить на станцію все необхідне. Треба порахувати потребу в продуктах, пальному й господар">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=3">
 </head>
 <body>
 <header class="top"><a class="brand" href="index.html"><span>❄</span> Полярна олімпіада</a><nav><a href="index.html">Головна</a><a href="word.html">Word</a><a href="excel.html" class=on>Excel</a><a href="access.html">Access</a><a href="powerpoint.html">PowerPoint</a><a href="reglament.html">Регламент</a></nav></header>
@@ -43,8 +43,8 @@
   </section>
   <section class="card">
     <h2>Самоперевірка</h2>
-    <p class="muted">Позначайте виконані кроки — прогрес зберігається у вашому браузері.</p>
-    <div class="check" data-module="excel"><label><input type="checkbox" data-key="excel-0"> Аркуш «Потреба»</label><label><input type="checkbox" data-key="excel-1"> Додайте річну потребу з резервом</label><label><input type="checkbox" data-key="excel-2"> Аркуш «Замовлення»</label><label><input type="checkbox" data-key="excel-3"> Оберіть найдешевший порт для кожного товару з урахуванням надбавки за доставку. Увага</label><label><input type="checkbox" data-key="excel-4"> Порахуйте вартість у USD і в гривнях та підсумки.</label><label><input type="checkbox" data-key="excel-5"> Сформуйте текстовий статус завантаження «Ноосфери» однією формулою</label><label><input type="checkbox" data-key="excel-6"> Аркуш «Запаси»</label><label><input type="checkbox" data-key="excel-7"> Умовне форматування</label><label><input type="checkbox" data-key="excel-8"> Аркуш «Панель»</label><label><input type="checkbox" data-key="excel-9"> Таблиця даних (аналіз «що як»)</label><label><input type="checkbox" data-key="excel-10"> Захистіть усі аркуші з розрахунками, залишивши доступними лише клітинки вхідних параметрів</label></div>
+    <p class="muted">Позначайте виконані пункти критеріїв — прогрес зберігається у вашому браузері.</p>
+    <div class="check" data-module="excel"><label><input type="checkbox" data-key="excel-r0"> Потреба за місяцями з кількістю днів і фіксованою витратою <span class="pts">15 б.</span></label><label><input type="checkbox" data-key="excel-r1"> Коефіцієнт резерву за категорією (VLOOKUP/INDEX) <span class="pts">5 б.</span></label><label><input type="checkbox" data-key="excel-r2"> Упаковки ROUNDUP, маса й об&#x27;єм <span class="pts">10 б.</span></label><label><input type="checkbox" data-key="excel-r3"> Найдешевший порт з надбавкою, ігнорування порожніх і «н/д» <span class="pts">15 б.</span></label><label><input type="checkbox" data-key="excel-r4"> Вартість у USD і грн, підсумки <span class="pts">5 б.</span></label><label><input type="checkbox" data-key="excel-r5"> Статус завантаження однією формулою з вкладеними IF <span class="pts">10 б.</span></label><label><input type="checkbox" data-key="excel-r6"> Модель запасів із затримкою, перший місяць дефіциту <span class="pts">15 б.</span></label><label><input type="checkbox" data-key="excel-r7"> Умовне форматування <span class="pts">5 б.</span></label><label><input type="checkbox" data-key="excel-r8"> Панель: список + динамічна діаграма <span class="pts">10 б.</span></label><label><input type="checkbox" data-key="excel-r9"> Таблиця даних на 2 змінні <span class="pts">5 б.</span></label><label><input type="checkbox" data-key="excel-r10"> Захист аркушів і незаблоковані вхідні клітинки <span class="pts">5 б.</span></label></div>
     <div class="bar"><i data-bar="excel"></i></div>
     <details><summary>Для вчителя: типові помилки учнів</summary><ul><li>Множать на 30 днів замість фактичної кількості днів у місяці.</li><li>Обирають порт за найменшою ціною в прайсі, забуваючи про надбавку: для пального й фруктів переможець змінюється.</li><li>Функція MIN спотикається об «н/д» або вважає порожню клітинку нулем.</li><li>Округлюють упаковки функцією ROUND — частина вантажу не замовлена.</li><li>Таблицю даних будують на іншому аркуші — Excel вимагає, щоб вхідні клітинки були на тому ж аркуші.</li></ul></details>
     <details><summary>Для журі: як швидко перевірити</summary><p>Змініть затримку корабля на 1 і 2 місяці: у правильному розв&#x27;язку з&#x27;являються дефіцити (1 позиція і 5 позицій відповідно). Змініть курс — має змінитися лише вартість у гривнях.</p></details>
@@ -67,6 +67,6 @@
 
 </main>
 <footer>© 2026 Кокорін Тарас, 3 курс, група 33 Бд-СОінф · ЖДУ імені Івана Франка · навчальний ресурс для підготовки до олімпіад з ІТ</footer>
-<script src="js/app.js"></script>
+<script src="js/app.js?v=3"></script>
 </body>
 </html>

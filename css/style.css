@@ -114,3 +114,5 @@ summary { cursor: pointer; font-weight: 600; color: var(--ice); }
 .sub-form .btn { grid-column: 1 / -1; justify-self: start; border: 0; cursor: pointer; font: inherit; font-weight: 700; }
 .sub-msg { margin-top: 10px; }
 @media (max-width: 560px) { .sub-form { grid-template-columns: 1fr; } }
+
+.check .pts { margin-left: auto; color: var(--amber); font-weight: 700; white-space: nowrap; padding-left: 8px; }

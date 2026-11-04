@@ -51,6 +51,7 @@ document.querySelectorAll(".sub-form").forEach((f) => {
     try { localStorage.setItem("polar-student", JSON.stringify({ name: v.name, school: v.school, to: v.to })); } catch (e) { /* приватний режим */ }
     const boxes = [...document.querySelectorAll(`.check[data-module="${f.dataset.module}"] input`)];
     const done = boxes.filter((b) => b.checked).length;
+    const pts = boxes.filter((b) => b.checked).reduce((a, b) => a + (parseInt(b.parentElement.querySelector('.pts')?.textContent) || 0), 0);
     const subject = `Полярна олімпіада — ${f.dataset.title} — ${v.name}`;
     const body = [
       "Доброго дня!",
@@ -59,7 +60,7 @@ document.querySelectorAll(".sub-form").forEach((f) => {
       `Учень: ${v.name}`,
       `Клас, школа: ${v.school}`,
       v.time ? `Витрачений час: ${v.time} хв` : null,
-      `Самоперевірка: виконано ${done} з ${boxes.length} кроків`,
+      `Самоперевірка: виконано ${done} з ${boxes.length} пунктів критеріїв (≈${pts} з 100 балів)`,
       v.note ? `Коментар: ${v.note}` : null,
       "",
       "Файли розв'язку — у вкладенні.",
