@@ -40,3 +40,31 @@
   document.querySelector('[data-min="240"]').classList.add("sel");
   draw();
 })();
+
+// Здача роботи: формує лист учителю (mailto) з даними учня та результатом самоперевірки.
+document.querySelectorAll(".sub-form").forEach((f) => {
+  const msg = f.parentElement.querySelector(".sub-msg");
+  try { const saved = JSON.parse(localStorage.getItem("polar-student") || "{}"); ["name", "school", "to"].forEach((k) => { if (saved[k]) f.elements[k].value = saved[k]; }); } catch (e) { /* без збереження */ }
+  f.addEventListener("submit", (ev) => {
+    ev.preventDefault();
+    const v = Object.fromEntries(new FormData(f));
+    try { localStorage.setItem("polar-student", JSON.stringify({ name: v.name, school: v.school, to: v.to })); } catch (e) { /* приватний режим */ }
+    const boxes = [...document.querySelectorAll(`.check[data-module="${f.dataset.module}"] input`)];
+    const done = boxes.filter((b) => b.checked).length;
+    const subject = `Полярна олімпіада — ${f.dataset.title} — ${v.name}`;
+    const body = [
+      "Доброго дня!",
+      "",
+      `Надсилаю розв'язок модуля «${f.dataset.title}».`,
+      `Учень: ${v.name}`,
+      `Клас, школа: ${v.school}`,
+      v.time ? `Витрачений час: ${v.time} хв` : null,
+      `Самоперевірка: виконано ${done} з ${boxes.length} кроків`,
+      v.note ? `Коментар: ${v.note}` : null,
+      "",
+      "Файли розв'язку — у вкладенні.",
+    ].filter((x) => x !== null).join("\n");
+    location.href = `mailto:${encodeURIComponent(v.to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    msg.textContent = "Лист відкрито у вашій пошті. Не забудьте прикріпити файли розв'язку перед надсиланням!";
+  });
+});
